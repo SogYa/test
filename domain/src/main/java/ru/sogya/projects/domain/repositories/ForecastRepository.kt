@@ -4,5 +4,6 @@ import ru.sogya.projects.domain.models.Forecast
 
 interface ForecastRepository {
 
-    suspend fun getForecastForMyLocation(): Forecast
+    fun getForecastForMyLocation(lat: Double, lon: Double): Forecast
+
 }
