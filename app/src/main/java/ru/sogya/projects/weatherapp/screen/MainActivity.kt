@@ -1,12 +1,25 @@
 package ru.sogya.projects.weatherapp.screen
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.sogya.projects.weatherapp.R
+import androidx.appcompat.app.AppCompatActivity
+import ru.sogya.projects.domain.usecase.GetForecastForMyLocationUseCase
+import ru.sogya.projects.weatherapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var getForecastForMyLocationUseCase: GetForecastForMyLocationUseCase
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        binding.buttonGetForecast.setOnClickListener {
+            binding.resultTextView.text =
+                getForecastForMyLocationUseCase.invoke(55.45, 37.37).toString()
+        }
     }
 }
