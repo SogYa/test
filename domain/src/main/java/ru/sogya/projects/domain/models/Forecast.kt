@@ -2,7 +2,7 @@ package ru.sogya.projects.domain.models
 
 
 data class Forecast(
-    val weather: ForecastWeather,
+    val weather: List<ForecastWeather>,
     val temperature: ForecastTemperature,
     val visibility: Long,
     val wind: ForecastWind,
